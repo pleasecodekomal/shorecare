@@ -28,7 +28,9 @@ export default function Sidebar() {
         <nav className="space-y-4 mt-20">
     
 
-        
+          <Link to="/" className="flex items-center gap-2 hover:text-yellow-300">
+            🏠 {isOpen && <span>Home</span>}
+          </Link>
           <Link to="/volunteer-management" className="flex items-center gap-2 hover:text-yellow-300">
             🧑‍🤝‍🧑 {isOpen && <span>Volunteer Management</span>}
           </Link>

@@ -15,6 +15,8 @@ const AppRouter = () => (
   <Routes>
     <Route element={<DashboardLayout />}>
       <Route path="/" element={<Home />} />
+      <Route path="/volunteerhome" element={<Home />} />
+
       <Route path="/achievements" element={<Achievements />} />
       <Route path="/my-drives" element={<MyDrives />} />
       <Route path="/guidance" element={<Guidance />} />

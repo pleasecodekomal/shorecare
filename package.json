@@ -1,0 +1,30 @@
+{
+  "name": "shorecare-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run backend:ngo\" \"npm run backend:volunteer\" \"npm run frontend\"",
+    "backend:ngo": "npm start --prefix ngo/backend",
+    "backend:volunteer": "npm start --prefix volunteer/backend",
+    "frontend": "react-scripts start"
+  },
+   "homepage": "https://github.com/pleasecodekomal/shorecare#readme",
+ "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/pleasecodekomal/shorecare/issues"
+  },  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pleasecodekomal/shorecare.git"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  
+  } 
+
+}
+
+
+
