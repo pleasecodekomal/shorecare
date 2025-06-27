@@ -1,18 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import Achievements from '../pages/Achievements';
-import MyDrives from '../pages/MyDrives';
-import Guidance from '../pages/Guidance';
-import Feed from '../pages/Feed';
-import Profile from '../pages/Profile';
 import DashboardLayout from '../layout/DashboardLayout';
-import NGOLogin from '../components/Navbar/NGOLogin';
-import Contact from '../components/Navbar/Contact';
-import About from '../components/Navbar/About';
-import Help from '../components/Navbar/Help';
-import CSRToolkitHome from '../pages/CSRToolkit/CSRToolkitHome';
-import CorporateDashboard from '../pages/CSRToolkit/CorporateDashboard';
-import SponsorLogin from '../pages/CSRToolkit/SponsorLogin';
+import Contact from '../components/Home/Navbar/Contact';
+import About from '../components/Home/Navbar/About';
+import Help from '../components/Home/Navbar/Help';
+import CSRToolkitHome from '../pages/CSR/CSRToolkit/CSRToolkitHome';
+import CorporateDashboard from '../pages/CSR/CSRToolkit/CorporateDashboard';
+import SponsorLogin from '../pages/CSR/CSRToolkit/SponsorLogin';
 
 // ✅ Import Beach Mapping feature
 import BeachMappingHome from '../pages/BeachMapping/BeachMappingHome';

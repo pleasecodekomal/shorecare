@@ -13,7 +13,7 @@ export default function DashboardLayout() {
       <div className={`transition-all duration-300 flex-1 ${isSidebarOpen ? 'ml-64' : 'ml-16'}`}>
         <Navbar isSidebarOpen={isSidebarOpen} />
         <main className="pt-10 px-1">
-          <Outlet />
+           <Outlet />
         </main>
       </div>
     </div>

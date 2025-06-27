@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BeachStatsTable from './BeachStatsTable';
 import BeachInsightsEDA from './BeachInsightsEDA';
-import { beachData } from '../../data/beach_data'; 
+import { beachData } from '../../assets/mockData/beach_data'; 
 
 const beaches = ['Versova', 'Dadar', 'Goregaon', 'Mahim', 'Juhu', 'Palm'];
 
