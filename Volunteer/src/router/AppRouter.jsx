@@ -6,10 +6,10 @@ import Guidance from '../pages/Guidance';
 import Feed from '../pages/Feed';
 import Profile from '../pages/Profile';
 import DashboardLayout from '../layout/DashboardLayout';
-import NGOLogin from '../components/Navbar/NGOLogin';
-import Contact from '../components/Navbar/Contact';
-import About from '../components/Navbar/About';
-import Help from '../components/Navbar/Help';
+import NGOLogin from '../components/Home/Navbar/NGOLogin';
+import Contact from '../components/Home/Navbar/Contact';
+import About from '../components/Home/Navbar/About';
+import Help from '../components/Home/Navbar/Help';
 
 const AppRouter = () => (
   <Routes>
