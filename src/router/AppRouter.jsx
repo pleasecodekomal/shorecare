@@ -1,19 +1,22 @@
 import { Routes, Route } from 'react-router-dom';
 
-// Shared
+// Public
 import LoginRegister from '../components/LoginRegister';
-import DashboardLayout from '../layout/DashboardLayout';// adjust if you have it in layout/
 
-// NGO pages
+// Layouts
+import NGODashboardLayout from '../ngo_src/layout/DashboardLayout';
+import VolunteerDashboardLayout from '../volunteer_src/layout/DashboardLayout';
+
+// NGO Pages
 import NGOHome from '../ngo_src/pages/Home/Home';
 import BeachMappingHome from '../ngo_src/pages/BeachMapping/BeachMappingHome';
-import CSRToolkitHome from '../ngo_src/pages/CSR/CSRToolkitHome';
-import CorporateDashboard from '../ngo_src/pages/CSR/CorporateDashboard';
-import SponsorLogin from '../ngo_src/pages/CSR/SponsorLogin';
+import CSRToolkitHome from '../ngo_src/pages/CSR/CSRToolkit/CSRToolkitHome';
+import CorporateDashboard from '../ngo_src/pages/CSR/CSRToolkit/CorporateDashboard';
+import SponsorLogin from '../ngo_src/pages/CSR/CSRToolkit/SponsorLogin';
 import SkillDeployment from '../ngo_src/pages/SkillDeployment/SkillDeployment';
 import VolunteerManagement from '../ngo_src/pages/VolunteerManagement/VolunteerManagement';
 
-// Volunteer pages
+// Volunteer Pages
 import VolunteerHome from '../volunteer_src/pages/Home/Home';
 import Achievements from '../volunteer_src/pages/Achievements';
 import MyDrives from '../volunteer_src/pages/MyDrives';
@@ -21,16 +24,13 @@ import Guidance from '../volunteer_src/pages/Guidance';
 import Feed from '../volunteer_src/pages/Feed';
 import Profile from '../volunteer_src/pages/Profile';
 
-// Common pages if any
-// e.g., About, Contact, Help → you can add if they’re shared
-
 const AppRouter = () => (
   <Routes>
-    {/* Public */}
+    {/* Public Route */}
     <Route path="/" element={<LoginRegister />} />
 
-    {/* NGO side */}
-    <Route element={<DashboardLayout />}>
+    {/* NGO Routes */}
+    <Route element={<NGODashboardLayout />}>
       <Route path="/ngohome" element={<NGOHome />} />
       <Route path="/beach-selection" element={<BeachMappingHome />} />
       <Route path="/csrtoolkithome" element={<CSRToolkitHome />} />
@@ -38,9 +38,11 @@ const AppRouter = () => (
       <Route path="/csr/sponsor-login" element={<SponsorLogin />} />
       <Route path="/skill-deployment" element={<SkillDeployment />} />
       <Route path="/volunteer-management" element={<VolunteerManagement />} />
+    </Route>
 
-      {/* Volunteer side */}
-  <Route path="/volunteerhome" element={<VolunteerHome />} />
+    {/* Volunteer Routes */}
+    <Route element={<VolunteerDashboardLayout />}>
+      <Route path="/volunteerhome" element={<VolunteerHome />} />
       <Route path="/achievements" element={<Achievements />} />
       <Route path="/my-drives" element={<MyDrives />} />
       <Route path="/guidance" element={<Guidance />} />

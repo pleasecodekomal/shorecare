@@ -1,0 +1,15 @@
+{
+  "name": "shorecare-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "backend:ngo": "npm start --prefix ngo/backend",
+    "backend:volunteer": "npm start --prefix volunteer/backend",
+    "frontend": "npm start --prefix ngo",
+    "main" : "src/main.jsx"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

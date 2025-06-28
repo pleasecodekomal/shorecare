@@ -1,9 +1,10 @@
 // src/pages/Achievements.jsx
 import { useState } from 'react';
 import quizzes from '../data/quizzes';
-export default function Achievements()
 
-{
+console.log("Achievements loaded");
+
+export default function Achievements() {
   const [score, setScore] = useState(0);
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);

@@ -32,6 +32,8 @@ const dummyDrives = [
   },
 ];
 
+console.log("MyDrives loaded");
+
 const MyDrives = () => {
   return (
       <div className="p-6">

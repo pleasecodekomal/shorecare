@@ -1,14 +1,53 @@
 {
-  "name": "shorecare-platform",
-  "version": "1.0.0",
+  "name": "shorecare",
+  "version": "0.1.0",
   "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.525.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-is": "^19.1.0",
+    "react-qr-scanner": "^1.0.0-alpha.11",
+    "react-router-dom": "^7.6.3",
+    "react-scripts": "5.0.1",
+    "recharts": "^3.0.2",
+    "tailwindcss": "^3.3.0",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
-    "start": "concurrently \"npm run backend:ngo\" \"npm run backend:volunteer\" \"npm run frontend\"",
-    "backend:ngo": "npm start --prefix ngo/backend",
-    "backend:volunteer": "npm start --prefix volunteer/backend",
-    "frontend": "npm start --prefix ngo"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-css": "tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "concurrently": "^8.2.0"
+    "@tailwindcss/postcss": "^4.1.11",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6"
   }
 }

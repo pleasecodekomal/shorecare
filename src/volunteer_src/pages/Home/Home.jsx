@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+console.log("VolunteerHome loaded"); // Add this on top
+
 export default function VolunteerHome() {
   return (
     <div className="min-h-screen bg-[#f5f0e1] p-8">
