@@ -17,15 +17,19 @@ export default function BeachStatsTable({ data }) {
         <tbody className="text-gray-800 text-sm md:text-base">
           <tr className="border-b">
             <td className="p-4 font-medium">Total Waste Collected (kg)</td>
-            <td className="p-4">{data.waste_kg.toLocaleString()}</td>
+            <td className="p-4">{data.waste_kg?.toLocaleString()}</td>
           </tr>
           <tr className="border-b">
             <td className="p-4 font-medium">Tourist Footfall (people)</td>
-            <td className="p-4">{data.tourists.toLocaleString()}</td>
+            <td className="p-4">{data.tourists?.toLocaleString()}</td>
           </tr>
-          <tr>
+          <tr className="border-b">
             <td className="p-4 font-medium">Events/Festivals Held</td>
             <td className="p-4">{data.events}</td>
+          </tr>
+          <tr>
+            <td className="p-4 font-medium">Beach Score</td>
+            <td className="p-4">{data.beach_score}</td>
           </tr>
         </tbody>
       </table>
