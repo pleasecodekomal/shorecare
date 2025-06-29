@@ -8,41 +8,34 @@ import {
   ResponsiveContainer,
   CartesianGrid,
   Legend,
-  ScatterChart,
-  Scatter,
-  ZAxis,
   Line,
   LineChart
 } from 'recharts';
 
 export default function BeachInsightsEDA({ data }) {
-  const monthlyWasteAndEvents = [
-    { month: 'Jan', waste: 1000, events: 1 },
-    { month: 'Feb', waste: 1300, events: 2 },
-    { month: 'Mar', waste: 1100, events: 1 },
-    { month: 'Apr', waste: 1600, events: 3 },
-    { month: 'May', waste: 1800, events: 2 },
-    { month: 'Jun', waste: data.waste_kg, events: data.events },
-  ];
+  // ✅ If no stats, use empty array so Recharts does not crash
+  const monthly_stats = data.monthly_stats || [];
 
-  const touristTrend = [
-    { month: 'Jan', tourists: 7000 },
-    { month: 'Feb', tourists: 8000 },
-    { month: 'Mar', tourists: 8500 },
-    { month: 'Apr', tourists: 10000 },
-    { month: 'May', tourists: 11000 },
-    { month: 'Jun', tourists: data.tourists },
-  ];
+  // ✅ Build your chart data safely
+  const chartData = monthly_stats.map(item => ({
+    month: item.month,
+    waste: item.waste_kg || 0,
+    events: Array.isArray(item.events) ? item.events.length : 0,
+    tourists: item.tourists || 0,
+    beach_score: item.beach_score || 0,
+  }));
+
+  console.log('✅ chartData:', chartData);
 
   return (
     <div className="bg-white p-6 rounded-xl shadow border border-gray-200 space-y-12">
       <h2 className="text-xl font-semibold text-[#0077b6]">📈 Visual Insights (Advanced EDA)</h2>
 
-      {/* Waste vs Events Bar Chart */}
+      {/* Waste vs Events */}
       <div>
-        <h3 className="text-lg font-medium mb-4">Waste Volume vs Events (6 Months)</h3>
+        <h3 className="text-lg font-medium mb-4">Waste Volume vs Events</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={monthlyWasteAndEvents}>
+          <BarChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
             <YAxis yAxisId="left" orientation="left" stroke="#0077b6" />
@@ -50,16 +43,16 @@ export default function BeachInsightsEDA({ data }) {
             <Tooltip />
             <Legend />
             <Bar yAxisId="left" dataKey="waste" fill="#0077b6" name="Waste (kg)" />
-            <Bar yAxisId="right" dataKey="events" fill="#90D5FF" name="Events" />
+            <Bar yAxisId="right" dataKey="events" fill="#90D5FF" name="Events Held" />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Tourist Activity Scatter Line Chart */}
+      {/* Tourist Trend */}
       <div>
-        <h3 className="text-lg font-medium mb-4">Tourist Activity Trend (6 Months)</h3>
+        <h3 className="text-lg font-medium mb-4">Tourist Activity Trend</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={touristTrend}>
+          <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
             <YAxis />
@@ -70,7 +63,20 @@ export default function BeachInsightsEDA({ data }) {
         </ResponsiveContainer>
       </div>
 
-
+      {/* Beach Score Trend */}
+      <div>
+        <h3 className="text-lg font-medium mb-4">Beach Score Trend</h3>
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis domain={[0, 100]} />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="beach_score" stroke="#ff7043" strokeWidth={3} name="Beach Score" />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

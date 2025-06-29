@@ -10,11 +10,29 @@ router.get('/', async (req, res) => {
 });
 
 // ✅ POST new beach
+// ✅ POST: add new beach or update existing beach by name
 router.post('/', async (req, res) => {
-  const beach = new Beach(req.body);
-  await beach.save();
-  res.status(201).json(beach);
+  try {
+    const { name, latitude, longitude, monthly_stats } = req.body;
+
+    const updated = await Beach.findOneAndUpdate(
+      { name: name },
+      {
+        name,
+        latitude,
+        longitude,
+        $push: { monthly_stats: { $each: monthly_stats } }
+      },
+      { upsert: true, new: true }
+    );
+
+    res.status(201).json(updated);
+  } catch (err) {
+    console.error(err);
+    res.status(400).send('Invalid request');
+  }
 });
+
 
 // ✅ PUT update beach by ID
 router.put('/:id', async (req, res) => {
