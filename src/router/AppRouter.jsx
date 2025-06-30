@@ -16,7 +16,7 @@ import BeachMappingHome from "../ngo_src/pages/BeachMapping/BeachMappingHome";
 import CSRToolkitHome from "../ngo_src/pages/CSR/CSRToolkit/CSRToolkitHome";
 import CorporateDashboard from "../ngo_src/pages/CSR/CSRToolkit/CorporateDashboard";
 import SponsorLogin from "../ngo_src/pages/CSR/CSRToolkit/SponsorLogin";
-import SkillDeployment from "../ngo_src/pages/SkillDeployment/SkillDeployment";
+import SkillDeploymenimport from "../ngo_src/pages/SkillDeployment/SkillDeployment";
 import VolunteerManagement from "../ngo_src/pages/VolunteerManagement/VolunteerManagement";
 
 // Volunteer Pages
