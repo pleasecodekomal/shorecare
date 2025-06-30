@@ -43,35 +43,42 @@ class LoginModel(BaseModel):
 # ---------- REGISTER ----------
 @router.post("/register")
 async def register(user: RegisterModel):
-    existing = await db["volunteer_profiles"].find_one({"username": user.username})
-    if existing:
-        raise HTTPException(status_code=400, detail="Username exists")
+    try:
+        print("🔁 Register request received:", user)
 
-    hashed = pwd_context.hash(user.password)
-    user_doc = {
-        "username": user.username,
-        "email": user.email,
-        "phone": user.phone,
-        "password": hashed,
-        "isVerified": False
-    }
-    result = await db["volunteer_profiles"].insert_one(user_doc)
-    user_id = str(result.inserted_id)
+        existing = await db["volunteer_profiles"].find_one({"username": user.username})
+        if existing:
+            raise HTTPException(status_code=400, detail="Username exists")
 
-    verify_token = jwt.encode(
-        {
-            "id": user_id,
-            "purpose": "verify",
-            "exp": datetime.utcnow() + timedelta(minutes=15)
-        },
-        SECRET_KEY,
-        algorithm=ALGORITHM
-    )
+        hashed = pwd_context.hash(user.password)
+        user_doc = {
+            "username": user.username,
+            "email": user.email,
+            "phone": user.phone,
+            "password": hashed,
+            "isVerified": False
+        }
+        result = await db["volunteer_profiles"].insert_one(user_doc)
+        user_id = str(result.inserted_id)
 
-    verification_link = f"http://localhost:5173/verify?role=volunteer&token={verify_token}"
-    print("✅ Verification link:", verification_link)
+        verify_token = jwt.encode(
+            {
+                "id": user_id,
+                "purpose": "verify",
+                "exp": datetime.utcnow() + timedelta(minutes=15)
+            },
+            SECRET_KEY,
+            algorithm=ALGORITHM
+        )
 
-    return {"message": "Volunteer registered. Check your email to verify.", "link": verification_link}
+        verification_link = f"http://localhost:5173/verify?role=volunteer&token={verify_token}"
+        print("✅ Verification link:", verification_link)
+
+        return {"message": "Volunteer registered. Check your email to verify.", "link": verification_link}
+    
+    except Exception as e:
+        print("❌ Registration error:", e)
+        raise HTTPException(status_code=500, detail="Internal server error during registration")
 
 
 # ---------- LOGIN ----------
