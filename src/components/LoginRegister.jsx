@@ -38,11 +38,11 @@ export default function LoginRegister() {
 
     const url = isRegister
       ? role === "ngo"
-        ? "http://localhost:8001/api/register"
-        : "http://localhost:8002/api/register"
+        ? "http://localhost:8002/api/register"
+        : "http://localhost:8001/api/register"
       : role === "ngo"
-        ? "http://localhost:8001/api/login"
-        : "http://localhost:8002/api/login";
+        ? "http://localhost:8002/api/login"
+        : "http://localhost:8001/api/login";
 
     try {
       const res = await fetch(url, {
