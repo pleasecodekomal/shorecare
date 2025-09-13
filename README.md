@@ -1,1 +1,1 @@
-fix the training file error, ask gpt how to run it simultaneously whenever the frontend is accessed, genAI implementation videoss
+
